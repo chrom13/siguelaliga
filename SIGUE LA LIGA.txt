@@ -1,0 +1,63 @@
+SIGUE LA LIGA
+=============
+
+    >> PUBLICO
+
+        ** Urls amigables
+
+        ** Error 404, 500
+
+        ** Lista de las ligas más seguidas
+            - ligasMasSeguidas($numeroDeLigas);
+
+        ** Lista de las ligas que sigue un usuario
+            - ligasSeguidasPorUnUsuario($idUsuario);
+
+        ** Lista de ligas que administra un usuario
+            - ligasAdministradasPorUnUsuario($idUsuario);
+
+        ** Buscador de ligas
+            - Sólo buscar ligas con estatus = 1
+
+        ** Registro/Inicio de sesión
+            - Twitter
+            - Facebook
+            - Web
+
+        ** Detalle de búsqueda
+
+
+        ** Seguir una liga
+
+
+        ** Dejar de seguir una liga
+            - El admin de una liga no puede dejar de seguir la liga, por lo tanto siempre habrá como mínimo un seguidor
+
+        ** Compartir una liga en Twitter
+
+
+        ** Compartir una liga en Facebook
+
+
+        ** Detalle de una liga
+            - Avisos
+            - Número de seguidores
+            - Equipos
+            - Comentarios
+            - Jornadas (tipo mediotiempo.com)
+            - Estadísticas (tipo mediotiempo.com)
+            ** Usuarios que siguen esta liga
+                - usuariosQueSiguenUnaLiga($idLiga);
+
+    >> ADMIN
+
+        ** Sección de usuarios
+            - Crear una liga (estatus 0)
+            - Validar una liga (cambiar el estatus a 1)
+            ** Equipos
+            - Listar equipos
+            - Agregar equipo
+            - Editar equipo
+            - Eliminar equipo
+            ** Jornadas
+            - Agregar jornadas (listar en una sola pantalla)
