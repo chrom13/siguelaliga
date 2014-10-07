@@ -22,5 +22,38 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
+
+// Urls amigables
+$router = Zend_Controller_Front::getInstance()->getRouter();
+
+$route = new Zend_Controller_Router_Route('/buscar/:criterio',
+    array('module' => 'default',
+          'controller' => 'index',
+          'action' => 'buscar'
+    )
+);
+
+$router->addRoute('buscador', $route);
+
+$route = new Zend_Controller_Router_Route('/liga/:liga/:id',
+    array('module' => 'default',
+          'controller' => 'liga',
+          'action' => 'index'
+    ),
+    array('id' => '\d+')
+);
+
+$router->addRoute('liga', $route);
+
+$route = new Zend_Controller_Router_Route('/usuario/:usuario/:id',
+    array('module' => 'default',
+          'controller' => 'usuario',
+          'action' => 'index'
+    ),
+    array('id' => '\d+')
+);
+
+$router->addRoute('usuario', $route);
+
 $application->bootstrap()
             ->run();

@@ -4,17 +4,22 @@ SIGUE LA LIGA
     >> PUBLICO
 
         ** Urls amigables
+            -> Buscador: /buscar/:criterio
+            -> Usuario: /usuario/:usuario/:id
+                -> /usuario/nano/1
+            -> Liga: /liga/:liga/:id
+                -> /liga/liga-de-los-animales/321
 
         ** Error 404, 500
 
         ** Lista de las ligas más seguidas
-            - ligasMasSeguidas($numeroDeLigas);
+            - obtenerLigasMasSeguidas($cantidad);
 
         ** Lista de las ligas que sigue un usuario
-            - ligasSeguidasPorUnUsuario($idUsuario);
+            - obtenerLigasQueSigueUnUsuario($idUsuario);
 
         ** Lista de ligas que administra un usuario
-            - ligasAdministradasPorUnUsuario($idUsuario);
+            - obtenerLigasQueAdministraUnUsuario($idUsuario);
 
         ** Buscador de ligas
             - Sólo buscar ligas con estatus = 1
