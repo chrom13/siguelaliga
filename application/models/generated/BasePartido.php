@@ -18,6 +18,8 @@ Doctrine_Manager::getInstance()->bindComponent('Partido', 'doctrine');
  * @property string $lugar
  * @property integer $ganadorExtraordinario
  * @property string $observaciones
+ * @property integer $idJornada
+ * @property Jornada $Jornada
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -125,11 +127,22 @@ abstract class BasePartido extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
+        $this->hasColumn('idJornada', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Jornada', array(
+             'local' => 'idJornada',
+             'foreign' => 'id'));
     }
 }

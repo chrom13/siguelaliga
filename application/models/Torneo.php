@@ -12,5 +12,21 @@
  */
 class Torneo extends BaseTorneo
 {
+    public static function obtenerAvisosDeUnTorneo($idTorneo)
+    {
+        $query = Doctrine_Query::create()->from('Aviso')->where('idTorneo = ' . $idTorneo);
+        return $query->execute();
+    }
 
+    public static function obtenerEquiposDeUnTorneo($idTorneo)
+    {
+        $query = Doctrine_Query::create()->from('Equipo')->where('idTorneo = ' . $idTorneo);
+        return $query->execute();
+    }
+
+    public static function obtenerJornadasDeUnTorneo($idTorneo)
+    {
+        $query = Doctrine_Query::create()->from('Jornada')->where('idTorneo = ' . $idTorneo);
+        return $query->execute();
+    }
 }

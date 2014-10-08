@@ -1,0 +1,63 @@
+<?php
+    // Verificamos si la liga existe
+    if($this->banderaLiga)
+    {
+        // La liga si existe
+        ?>
+        <div id="liga">
+            <section="liga-contenido">
+                <ul>
+                    <li>Avisos</li>
+                    <li>Equipos</li>
+                    <li>Jornadas</li>
+                    <li>Estadísticas</li>
+                </ul>
+                <sectionsection="liga-avisos">
+                    <h2>Avisos</h2>
+
+                </section>
+                <section id="liga-equipos">
+                    <h2>Equipos</h2>
+
+                </section>
+                <section id="liga-jornadas">
+                    <h2>Jornadas</h2>
+
+                </section>
+                <section id="liga-estadisticas">
+                    <h2>Estadísticas</h2>
+
+                </section>
+            </section>
+            <aside>
+                <article>
+                    <h3>Usuarios que siguen la liga</h3>
+                    <?php
+                        // Mostramos los usuarios que siguen esta liga
+                        foreach($this->seguidores AS $registro)
+                        {
+                            echo '<a href="/usuario/' . $registro->Usuario->usuario . '/' . $registro->idUsuario . '" title="' . $registro->Usuario->usuario . '">' . $registro->Usuario->usuario . '</a>';
+                        }
+                    ?>
+                </article>
+                <article>
+                    <h3>Ligas más seguidas</h3>
+                    <?php
+                        // Mostramos las ligas más seguidas
+                        foreach($this->ligasMasSeguidas AS $registro)
+                        {
+                            echo '<a href="/liga/' . $registro->Liga->nombre . '/' . $registro->idLiga . '" title="' . $registro->Liga->nombre . '">' . $registro->Liga->nombre . '</a>';
+                        }
+                    ?>
+                </article>
+            </aside>
+        </div>
+        <?php
+    }
+
+    else
+    {
+        // La liga no existe
+
+    }
+?>

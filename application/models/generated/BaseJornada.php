@@ -11,6 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('Jornada', 'doctrine');
  * @property string $nombre
  * @property integer $idTorneo
  * @property Torneo $Torneo
+ * @property Doctrine_Collection $Partido
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -56,5 +57,9 @@ abstract class BaseJornada extends Doctrine_Record
         $this->hasOne('Torneo', array(
              'local' => 'idTorneo',
              'foreign' => 'id'));
+
+        $this->hasMany('Partido', array(
+             'local' => 'id',
+             'foreign' => 'idJornada'));
     }
 }

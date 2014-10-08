@@ -3,7 +3,7 @@ SIGUE LA LIGA
 
     >> PUBLICO
 
-        ** Urls amigables
+        ___** Urls amigables
             -> Buscador: /buscar/:criterio
             -> Usuario: /usuario/:usuario/:id
                 -> /usuario/nano/1
@@ -12,13 +12,13 @@ SIGUE LA LIGA
 
         ** Error 404, 500
 
-        ** Lista de las ligas más seguidas
+        ___** Lista de las ligas más seguidas
             - obtenerLigasMasSeguidas($cantidad);
 
-        ** Lista de las ligas que sigue un usuario
+        ___** Lista de las ligas que sigue un usuario
             - obtenerLigasQueSigueUnUsuario($idUsuario);
 
-        ** Lista de ligas que administra un usuario
+        ___** Lista de ligas que administra un usuario
             - obtenerLigasQueAdministraUnUsuario($idUsuario);
 
         ** Buscador de ligas
@@ -51,7 +51,7 @@ SIGUE LA LIGA
             - Comentarios
             - Jornadas (tipo mediotiempo.com)
             - Estadísticas (tipo mediotiempo.com)
-            ** Usuarios que siguen esta liga
+            ___** Usuarios que siguen esta liga
                 - usuariosQueSiguenUnaLiga($idLiga);
 
     >> ADMIN

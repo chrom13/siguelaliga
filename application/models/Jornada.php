@@ -12,5 +12,9 @@
  */
 class Jornada extends BaseJornada
 {
-
+    public static function obtenerPartidosDeUnaJornada($idJornada)
+    {
+        $query = Doctrine_Query::create()->from('Partido')->where('idJornada = ' . $idJornada);
+        return $query->execute();
+    }
 }

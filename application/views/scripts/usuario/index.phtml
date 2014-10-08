@@ -1,0 +1,151 @@
+<?php
+    // Verificamos si el usuario existe
+    if($this->banderaUsuario)
+    {
+        // El usuario si existe
+        ?>
+        <div id="usuario">
+            <div id="usuario-info">
+                <figure>
+                    <img src="/img/usuarios/" alt="">
+                </figure>
+                <div>
+                    <h2><?php echo $this->usuario->usuario; ?></h2>
+                    <p><?php echo $this->usuario->nombre . ' ' . $this->usuario->apellidoPaterno; echo (!is_null($this->usuario->apellidoMaterno)) ? $this->usuario->apellidoMaterno : ''; ?></p>
+                    <p><em>Ultimo ingreso: <?php echo DesarrollandoIdeas_Funciones::darFormatoFecha(substr($this->usuario->fechaUltimoIngreso, 0, 10)); ?></em></p>
+                </div>
+            </div>
+            <section id="usuario-ligas-administradas">
+                <h3>Ligas administradas</h3>
+                <?php
+                    // Verificamos si existen ligas administradas
+                    if(count($this->ligasAdministradas) > 0)
+                    {
+                        // Si tiene ligas administradas
+
+                        // Mostramos las ligas administradas
+                        foreach($this->ligasAdministradas AS $registro)
+                        {
+                            ?>
+                            <article>
+                                <h2><?php echo '<a href="/liga/' . DesarrollandoIdeas_Funciones::urlAmigable($registro->nombre) . '/' . $registro->id . '" title="' . $registro->nombre . '">' . $registro->nombre . '</a>'; ?></h2>
+                                <p><?php echo $registro->descripcion; ?></p>
+                                <p><span class="numero-seguidores"><?php echo (!is_null($this->ligasAdministradasNumeroDeSeguidores[$registro->id]->total)) ? $this->ligasAdministradasNumeroDeSeguidores[$registro->id]->total : '0'; ?> seguidor(es)</span></p>
+                                <input type="button" name="compartir-facebook-button" value="Facebook">
+                                <input type="button" name="compartir-Twitter-button" value="Twitter">
+                                <?php
+                                    // Verificamos si el usuario está firmado
+                                    if($this->usuarioFirmado)
+                                    {
+                                        // Usuario firmado
+
+                                        // Verificamos si el usuario está siguiendo la liga
+                                        if($this->ligasAdministradasBanderaSeguimiento[$registro->id])
+                                        {
+                                            // El usuario sigue la liga
+                                            ?>
+                                            <input type="button" name="seguir-button" id="seguir-button" value="Siguiendo" onclick="dejarLiga(<?php echo $registro->id; ?>, <?php echo $this->usuarioFirmado->id; ?>)">
+                                            <?php
+                                        }
+
+                                        else
+                                        {
+                                            // El usuario no sigue la liga
+                                            ?>
+                                            <input type="button" name="seguir-button" id="seguir-button" value="Seguir" onclick="seguirLiga(<?php echo $registro->id; ?>, <?php echo $this->usuarioFirmado->id; ?>)">
+                                            <?php
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        // Usuario no firmado
+                                        ?>
+                                        <input type="button" name="seguir-button" value="Seguir">
+                                        <?php
+                                    }
+                                ?>
+                            </article>
+                            <?php
+                        }
+                    }
+
+                    else
+                    {
+                        // No tiene ligas administradas
+                        echo 'Aún no administra ligas.';
+                    }
+                ?>
+            </section>
+            <section id="usuario-ligas-seguidas">
+                <h3>Ligas que está siguiendo</h3>
+                <?php
+                    // Verificamos si existen ligas seguidas
+                    if(count($this->ligasSeguidas) > 0)
+                    {
+                        // Si tiene ligas seguidas
+                        
+                        // Mostramos las ligas seguidas
+                        foreach($this->ligasSeguidas AS $registro)
+                        {
+                            ?>
+                            <article>
+                                <h2><?php echo '<a href="/liga/' . DesarrollandoIdeas_Funciones::urlAmigable($registro->Liga->nombre) . '/' . $registro->idLiga . '" title="' . $registro->Liga->nombre . '">' . $registro->Liga->nombre . '</a>'; ?></h2>
+                                <p><?php echo $registro->Liga->descripcion; ?></p>
+                                <p><span class="numero-seguidores"><?php echo (!is_null($this->ligasSeguidasNumeroDeSeguidores[$registro->id]->total)) ? $this->ligasSeguidasNumeroDeSeguidores[$registro->id]->total : '0'; ?> seguidor(es)</span></p>
+                                <input type="button" name="compartir-facebook-button" value="Facebook">
+                                <input type="button" name="compartir-Twitter-button" value="Twitter">
+                                <?php
+                                    // Verificamos si el usuario está firmado
+                                    if(!empty($this->usuarioFirmado))
+                                    {
+                                        // Usuario firmado
+
+                                        // Verificamos si el usuario está siguiendo la liga
+                                        if($this->ligasSeguidasBanderaSeguimiento[$registro->id])
+                                        {
+                                            // El usuario sigue la liga
+                                            ?>
+                                            <input type="button" name="seguir-button" id="seguir-button" value="Siguiendo" onclick="dejarLiga(<?php echo $registro->id; ?>, <?php echo $this->usuarioFirmado->id; ?>)">
+                                            <?php
+                                        }
+
+                                        else
+                                        {
+                                            // El usuario no sigue la liga
+                                            ?>
+                                            <input type="button" name="seguir-button" id="seguir-button" value="Seguir" onclick="seguirLiga(<?php echo $registro->id; ?>, <?php echo $this->usuarioFirmado->id; ?>)">
+                                            <?php
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        // Usuario no firmado
+                                        ?>
+                                        <input type="button" name="seguir-button" value="Seguir">
+                                        <?php
+                                    }
+                                ?>
+                            </article>
+                            <?php
+                        }
+                    }
+
+                    else
+                    {
+                        // No tiene ligas Seguidas
+                        echo 'Aún no sigue ligas.';
+                    }
+                ?>
+            </section>
+        </div>
+        <?php
+    }
+
+    else
+    {
+        // El usuario no existe
+
+    }
+?>
